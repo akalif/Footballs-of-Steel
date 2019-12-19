@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+
+    <title>Canvas Testing: Animation needed</title>
+
+    <link rel="stylesheet" href= "SteelRDStyle.css"> 
+
+</head>
+
+<body onload="startGame()">  
+
+<h1> FumbleSteelSkins - Stupavisory Mode - Campaign Manager</h1>
+<hr>
+
+
+<br>
+<div id="canvas"  width="1200px" height="500">
+
+    <script> 
+
+        var myTeamWR1GamePiece;
+        var myTeamWR2GamePiece;
+        var myTeamTE1GamePiece;
+        var myTeamLeftGuardGamePiece;
+        var myTeamLeftTackleGamePiece;
+        var myTeamCenterGamePiece;
+        var myTeamRightTackleGamePiece;
+        var myTeamRightGuardGamePiece;
+        var myTeamRunningBackGamePiece;
+        var myTeamQuarterBackGamePiece;
+        var myTeamWR3TE2RB2GamePiece;
+
+        function startGame() {
+          myGameArea.start();
+          myTeamWR1GamePiece = new component(20, 20, "black", 30, 55);
+          myTeamWR2GamePiece = new component(20, 20, "black", 30, 85);
+          myTeamTE1GamePiece = new component(20, 20, "black", 50, 110);
+          myTeamLeftGuardGamePiece = new component(20, 20,"black",50, 135);
+          myTeamLeftTackleGamePiece = new component(20, 20, "black", 50, 160);
+          myTeamCenterGamePiece = new component(20, 20, "black", 70, 185);
+          myTeamRightTackleGamePiece = new component(20, 20, "black", 50, 215);
+          myTeamRightGuardGamePiece= new component(20, 20, "black", 50, 240);
+          myTeamRunningBackGamePiece= new component(20, 20, "black", 0, 185);
+          myTeamQuarterBackGamePiece= new component(20, 20, "black", 35, 185);
+          myTeamWR3TE2RB2GamePiece= new component(20, 20, "black", 30, 270);
+        }
+        
+        function updateGameArea() {
+          myGameArea.clear();
+          
+          myTeamWR1GamePiece.x += 1;
+          myTeamWR1GamePiece.update();
+          myTeamWR2GamePiece.x += 1;
+          myTeamWR2GamePiece.update();
+          myTeamTE1GamePiece.x += 1;
+          myTeamTE1GamePiece.update();
+          myTeamLeftGuardGamePiece.x += 1;
+          myTeamLeftGuardGamePiece.update();
+
+          myTeamLeftTackleGamePiece.x += 1;
+          myTeamLeftTackleGamePiece.update();
+          myTeamCenterGamePiece.x += 1;
+          myTeamCenterGamePiece.update();
+          myTeamRightTackleGamePiece.x += 1;
+          myTeamRightTackleGamePiece.update();
+
+          myTeamRightGuardGamePiece.x += 1;
+          myTeamRightGuardGamePiece.update();
+          myTeamRunningBackGamePiece.x += 1;
+          myTeamRunningBackGamePiece.update();
+          myTeamQuarterBackGamePiece.x += 1;
+          myTeamQuarterBackGamePiece.update();
+          myTeamWR3TE2RB2GamePiece.x += 1;
+          myTeamWR3TE2RB2GamePiece.update();
+        }
+
+
+
+
+    
+        
+        var myGameArea = {
+          canvas : document.createElement("canvas"),
+          start : function() {
+            this.canvas.width = 1200;
+            this.canvas.height = 500;
+        
+            this.context = this.canvas.getContext("2d");
+
+    
+            document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+            this.interval = setInterval(updateGameArea, 20);
+           
+            },
+
+          clear : function(){
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          }
+        }
+                  
+           
+
+        
+          function component(width, height, color, x, y) {
+          this.width = width;
+          this.height = height;
+          this.x = x;
+          this.y = y;
+          this.update = function(){
+            ctx = myGameArea.context;
+            ctx.fillStyle = color;
+            ctx.strokeStyle = color;
+            ctx.stroke();
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            
+          }
+        }
+              
+       
+       
+
+        </script>
+
+</div>
+
+<br>
+
+
+
+   
+   
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+         
+
+
+            
+      
+    
+
+     
+    
+    <hr>
+<div style="text-align:center;">
+    
+    <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+    <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button><br>
+    <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+    <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button><br>
+    
+</div>
+  
+
+
+
+
+
+</body>
+</html>
+
